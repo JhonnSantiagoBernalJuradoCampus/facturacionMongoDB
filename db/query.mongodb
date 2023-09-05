@@ -73,7 +73,39 @@ db.Ventas.insertMany([
         "nombre_pac": "Camila Rueda",
         "venta_fecha": "2023-05-22",
         "cantidad": 8
-    }
+    },
+    {
+        "venta_id": 6,
+        "nombre_prov": "Santiago",
+        "nombre_med": "Aspirina",
+        "nombre_pac": "Camila Rueda",
+        "venta_fecha": "2023-05-11",
+        "cantidad": 10
+    },
+    {
+        "venta_id": 7,
+        "nombre_prov": "Santiago",
+        "nombre_med": "Omeprazol",
+        "nombre_pac": "Daniel Felipe",
+        "venta_fecha": "2022-04-13",
+        "cantidad": 2
+    },
+    {
+        "venta_id": 8,
+        "nombre_prov": "Santiago",
+        "nombre_med": "Paracetamol",
+        "nombre_pac": "Daniel Felipe",
+        "venta_fecha": "2021-05-10",
+        "cantidad": 1
+    },
+    {
+        "venta_id": 9,
+        "nombre_prov": "Santiago",
+        "nombre_med": "Paracetamol",
+        "nombre_pac": "Camila Rueda",
+        "venta_fecha": "2024-01-30",
+        "cantidad": 6
+    },
 ]);
 
 use("facturacionCampus_JhonBernal");
@@ -261,6 +293,8 @@ db.Recetas.insertMany([
         "rec_fecha": "01-02-2024"
     }
 ])
+
+use("facturacionCampus_JhonBernal");
 db.createCollection("Medicamentos", {
     validator: {
         $jsonSchema: {
@@ -329,5 +363,3 @@ db.Medicamentos.insertMany([
         "caducidad": "2022-07-30",
     }
 ]);
-use("facturacionCampus_JhonBernal");
-db.Medicamentos.find({caducidad: {$gte: "2024-01-01"}});

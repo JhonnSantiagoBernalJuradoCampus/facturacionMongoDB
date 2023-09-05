@@ -202,7 +202,6 @@ db.Ventas.aggregate([
         }
     }
 ])
-use("facturacionCampus_JhonBernal");
 db.Ventas.aggregate([
     {
         $match: {
@@ -217,3 +216,18 @@ db.Ventas.aggregate([
         }
     }
 ]);
+db.Medicamentos.find({caducidad: {$gte: "2024-01-01"}});
+use("facturacionCampus_JhonBernal");
+db.Ventas.aggregate([
+    {
+        $group: {
+          _id: "$nombre_prov",
+          "ventas": {$sum: 1}
+        }
+    },
+    {
+        $match: {
+            "ventas": {$gte: 5}
+        }
+    }
+])
