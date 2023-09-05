@@ -39,4 +39,9 @@ const getTotalDinero = async (req,res)=>{
     res.send(result);
 }
 
-export {getVentasMedicamento, getTotalDinero};
+const getSinVentas = async (req,res) =>{
+    const result = await collection.find({ "venta_fecha": {$lt: "2022-09-05"}},{"_id": 0,"nombre_prov": 1}).toArray();
+    res.send(result);
+};
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas};
