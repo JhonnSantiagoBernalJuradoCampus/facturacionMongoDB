@@ -554,7 +554,24 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-21. Obtener todos los medicamentos que expiren en 2024
+21. `/medicamentos/proximo` Obtener todos los medicamentos que expiren en 2024
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f76afcbe2bc214beb6c5ee",
+            "med_id": 2,
+            "med_nombre": "Simvastatina",
+            "contacto_proveedor": "Angie",
+            "precio": 10000,
+            "stock": 40,
+            "caducidad": "2024-03-20"
+        }
+    ]
+    ```
+    </details>
 
 22. Empleados que hayan hecho más de 5 ventas en total
 
