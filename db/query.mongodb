@@ -1,5 +1,38 @@
 use("facturacionCampus_JhonBernal");
-db.createCollection("Ventas");
+db.createCollection("Ventas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["venta_id","nombre_prov","nombre_med","nombre_pac","venta_fecha","cantidad"],
+            properties: {
+                "venta_id": {
+                    bsonType: "number",
+                    description: "Error en el campo venta_id"
+                },
+                "nombre_prov": {
+                    bsonType: "string",
+                    description: "Error en el campo nombre_prov"
+                },
+                "nombre_med": {
+                    bsonType: "string",
+                    description: "Error en el campo nombre_med"
+                },
+                "nombre_pac": {
+                    bsonType: "string",
+                    description: "Error en el campo nombre_pac"
+                },
+                "venta_fecha": {
+                    bsonType: "string",
+                    description: "Error en el campo venta_fecha"
+                },
+                "cantidad": {
+                    bsonType: "number",
+                    description: "Error en el campo cantidad"
+                }
+            }
+        }
+    }
+});
 db.Ventas.insertMany([
     {
         "venta_id": 1,
@@ -32,14 +65,16 @@ db.Ventas.insertMany([
         "nombre_pac": "Daniel Felipe",
         "venta_fecha": "2022-07-30",
         "cantidad": 5
+    },
+    {
+        "venta_id": 5,
+        "nombre_prov": "Luis",
+        "nombre_med": "Aspirina",
+        "nombre_pac": "Camila Rueda",
+        "venta_fecha": "2023-05-22",
+        "cantidad": 8
     }
 ]);
-
-use("facturacionCampus_JhonBernal");
-
-
-use("facturacionCampus_JhonBernal");
-db.createCollection("Compras")
 
 use("facturacionCampus_JhonBernal");
 db.createCollection("Proveedores")
@@ -57,8 +92,12 @@ db.Proveedores.insertMany([
         "prov_nombre": "Nicole"
     },
     {
-        "prov_id": 3,
+        "prov_id": 4,
         "prov_nombre": "Fernando"
+    },
+    {
+        "prov_id": 5,
+        "prov_nombre": "Luis"
     }
 ]);
 
@@ -97,6 +136,10 @@ db.Pacientes.insertMany([
     {
         "pac_id": 3,
         "pac_nombre": "James Ronald"
+    },
+    {
+        "pac_id": 4,
+        "pac_nombre": "Camila Rueda"
     }
 ])
 
@@ -158,11 +201,6 @@ db.Medicamentos.insertMany([
     }
 ]);
 
-use("facturacionCampus_JhonBernal");
-
-
-use("facturacionCampus_JhonBernal");
-db.createCollection("Inventario")
 // 1. db.Medicamentos.find({stock: {$lt: 50}});
 /* 2. db.Proveedores.aggregate([
    {
