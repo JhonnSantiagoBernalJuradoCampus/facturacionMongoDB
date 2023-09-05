@@ -125,4 +125,21 @@ const getVentasAño = async (req,res) =>{
     res.send(result);
 }
 
-export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor, getPromedioMedicamento, getVentasAño};
+const getMasVentas = async (req,res) =>{
+    const result = await collection.aggregate([
+        {
+            $group: {
+              _id: "$nombre_prov",
+              "ventas": {$sum: 1}
+            }
+        },
+        {
+            $match: {
+                "ventas": {$gte: 5}
+            }
+        }
+    ]).toArray();
+    res.send(result)
+}
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor, getPromedioMedicamento, getVentasAño, getMasVentas};
