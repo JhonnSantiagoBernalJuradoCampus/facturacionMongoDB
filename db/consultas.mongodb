@@ -193,3 +193,12 @@ db.Ventas.aggregate([
         }
     }
 ]);
+db.Ventas.aggregate([
+    {
+        $group: {
+          _id: "$venta_id",
+          "medicamento": {$first: "$nombre_med"},
+          "promedio": {$avg: "$cantidad"}
+        }
+    }
+])

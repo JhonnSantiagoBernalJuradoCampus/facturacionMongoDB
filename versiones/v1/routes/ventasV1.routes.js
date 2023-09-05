@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getGananciaProveedor, getMedicamentoMarzo, getMenosVendido, getSinVentas, getTotalDinero, getVentasMedicamento } from "../controllers/ventasController.js";
+import { getGananciaProveedor, getMedicamentoMarzo, getMenosVendido, getPromedioMedicamento, getSinVentas, getTotalDinero, getVentasMedicamento } from "../controllers/ventasController.js";
 import { validatePermisos } from "../../../helpers/validatePermisos.js";
 
 const appVentas = Router();
@@ -10,5 +10,6 @@ appVentas.get("/sinVentas", validatePermisos("get"), getSinVentas);
 appVentas.get("/marzo", validatePermisos("get"), getMedicamentoMarzo);
 appVentas.get("/menosVendido", validatePermisos("get"), getMenosVendido);
 appVentas.get("/ganancia", validatePermisos("get"), getGananciaProveedor);
+appVentas.get("/promedio", validatePermisos("get"), getPromedioMedicamento);
 
 export default appVentas;

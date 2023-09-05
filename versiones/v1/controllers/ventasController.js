@@ -94,4 +94,17 @@ const getGananciaProveedor = async (req,res) =>{
     res.send(result)
 };
 
-export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor};
+const getPromedioMedicamento = async (req,res) =>{
+    const result = await collection.aggregate([
+        {
+            $group: {
+              _id: "$venta_id",
+              "medicamento": {$first: "$nombre_med"},
+              "promedio": {$avg: "$cantidad"}
+            }
+        }
+    ]).toArray();
+    res.send(result);
+};
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor, getPromedioMedicamento};
