@@ -17,7 +17,6 @@ const generateToken = async (req,res,next) =>{
 
   if (!result) return res.status(401).send({status:401, message: "Usuario no encontrado"});
   const encoder = new TextEncoder();
-  console.log(result);
   
   let data = {
       id: result._id.toString(),

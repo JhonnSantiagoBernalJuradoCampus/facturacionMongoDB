@@ -1,6 +1,5 @@
 export const validatePermisos = (requiredPermission) => async (req, res, next) => {
     const permisos = req.data.payload.role.permisos;
-    console.log(permisos);
     if (permisos.includes("*")){
         next();
     }else if (!permisos.includes(requiredPermission)){

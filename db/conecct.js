@@ -5,12 +5,7 @@ dotenv.config();
 export async function connectionDB (){
     try {
         const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@ejemplocluster.p78ttxa.mongodb.net/${process.env.ATLAS_DB}`
-        const opt = {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        };
-        
-        const client = await MongoClient.connect(uri,opt);
+        const client = await MongoClient.connect(uri);
         return client.db();
         } catch (error) {
         return {status: 500, message: error};
