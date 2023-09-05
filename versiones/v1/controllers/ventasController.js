@@ -8,4 +8,35 @@ const getVentasMedicamento = async (req,res)=>{
     res.send({"Cantidad": result})
 };
 
-export {getVentasMedicamento};
+const getTotalDinero = async (req,res)=>{
+    const result = await collection.aggregate([
+        {
+            $lookup: {
+                from: "Medicamentos",
+                localField: "nombre_med",
+                foreignField: "med_nombre",
+                as: "med"
+            }
+        },
+        {
+            $match: {
+                "med": {$ne: []}
+            }
+        },
+        {
+            $unwind: "$med"
+        },
+        {
+            $group: {
+                _id: "$med.med_id",
+                nombre_med: { $first: "$nombre_med"},
+                cantidad: { $sum: "$cantidad"},
+                precio: {$first: "$med.precio"},
+                recuado:{$sum: {$multiply: ["$cantidad", "$med.precio"]}}
+            }
+        }
+    ]).toArray();
+    res.send(result);
+}
+
+export {getVentasMedicamento, getTotalDinero};
