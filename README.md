@@ -296,8 +296,7 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     </details>
 
 
-11. `/medicamentos/caro
-` Obtener el medicamento más caro
+11. `/medicamentos/caro` Obtener el medicamento más caro
     <details>
     <summary>Datos de salida</summary>
 
@@ -316,7 +315,37 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-12. Número de medicamentos por proveedor
+12. `/proveedor/cantidad` Número de medicamentos por proveedor
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": 3,
+            "proveedor": "Santiago",
+            "medicamentos": 1
+        },
+        {
+            "_id": 4,
+            "proveedor": "Fernando",
+            "medicamentos": 1
+        },
+        {
+            "_id": 1,
+            "proveedor": "Santiago",
+            "medicamentos": 1
+        },
+        {
+            "_id": 2,
+            "proveedor": "Angie",
+            "medicamentos": 1
+        }
+    ]
+    ```
+    </details>
+
+13. Pacientes que han comprado Paracetamol
     <details>
     <summary>Datos de salida</summary>
 
@@ -327,9 +356,16 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-13. Pacientes que han comprado Paracetamol
-
 14. Proveedores que no han vendido medicamentos en el último año
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
 
 15. Obtener el total de medicamentos vendidos en marzo de 2023
 
