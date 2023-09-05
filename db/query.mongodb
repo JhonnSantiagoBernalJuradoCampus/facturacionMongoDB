@@ -77,7 +77,24 @@ db.Ventas.insertMany([
 ]);
 
 use("facturacionCampus_JhonBernal");
-db.createCollection("Proveedores")
+db.createCollection("Proveedores", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["prov_id", "prov_nombre"],
+            properties: {
+                "prov_id": {
+                    bsonType: "number",
+                    description: "Error en el campo prov_id"
+                },
+                "prov_nombre": {
+                    bsonType: "string",
+                    description: "Error en el campo prov_nombre"
+                },
+            }
+        }
+    }
+})
 db.Proveedores.insertMany([
     {
         "prov_id": 1,
@@ -102,7 +119,38 @@ db.Proveedores.insertMany([
 ]);
 
 use("facturacionCampus_JhonBernal");
-db.createCollection("Empleados")
+db.createCollection("Empleados", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["empleado_id", "empleado_nombre","role"],
+            properties: {
+                "empleado_id": {
+                    bsonType: "number",
+                    description: "Error en el campo empleado_id"
+                },
+                "empleado_nombre": {
+                    bsonType: "string",
+                    description: "Error en el campo empleado_nombre"
+                },
+                "role": {
+                    bsonType: "object",
+                    required: ["nombre", "permisos"],
+                    properties: {
+                        "nombre": {
+                            bsonType: "string",
+                            description: "Error en el campo nombre"
+                        },
+                        "permisos": {
+                            bsonType: "array",
+                            description: "Error en el campo permisos"
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
 db.Empleados.insertMany([
     {
         "empleado_id": 1,
@@ -123,7 +171,24 @@ db.Empleados.insertMany([
 ])
 
 use("facturacionCampus_JhonBernal");
-db.createCollection("Pacientes");
+db.createCollection("Pacientes", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["pac_id", "pac_nombre"],
+            properties: {
+                "pac_id": {
+                    bsonType: "number",
+                    description: "Error en el campo pac_id"
+                },
+                "pac_nombre": {
+                    bsonType: "string",
+                    description: "Error en el campo pac_nombre"
+                },
+            }
+        }
+    }
+});
 db.Pacientes.insertMany([
     {
         "pac_id": 1,
