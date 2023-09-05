@@ -54,4 +54,44 @@ const getMenosVendido = async (req,res)=>{
     res.send(result)
 }
 
-export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido};
+const getGananciaProveedor = async (req,res) =>{
+    const result = await collection.aggregate([
+        {
+            $lookup: {
+              from: "Medicamentos",
+              localField: "nombre_med",
+              foreignField: "med_nombre",
+              as: "Precio"
+            }
+        },
+        {
+            $match: {
+                "venta_fecha": {$gte: "2023-01-01"}
+            }
+        },
+        {
+            $project: {
+                "_id": 0,
+                "venta_id": 1,
+                "nombre_prov": 1,
+                "venta_fecha": 1,
+                "cantidad": 1,
+                "Precio.precio": 1
+            }
+        },
+        {
+            $unwind: "$Precio"
+        },
+        {
+            $group: {
+              _id: "$venta_id",
+              "nombre_prov": { $first: "$nombre_prov"},
+              "venta_fecha": { $first: "$venta_fecha"},
+              "ganancia": {$sum: { $multiply: ["$cantidad", "$Precio.precio"] }}
+            }
+        }
+    ]).toArray();
+    res.send(result)
+};
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor};
