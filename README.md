@@ -33,7 +33,7 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
 <img src="./assets/usoToken.png">
 
 # Consultas
-1. `/medicamentos/` Obtener todos los medicamentos con menos de 50 unidades en stock
+1. `/medicamentos/menor50` Obtener todos los medicamentos con menos de 50 unidades en stock
     <details>
     <summary>Datos de salida</summary>
 
