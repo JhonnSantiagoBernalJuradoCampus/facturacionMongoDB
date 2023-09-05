@@ -209,7 +209,40 @@ db.Pacientes.insertMany([
 ])
 
 use("facturacionCampus_JhonBernal");
-db.createCollection("Recetas");
+db.createCollection("Recetas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["rec_id","id_paciente","id_medicamento","nombre_empleado","cantidad","rec_fecha",],
+            properties: {
+                "rec_id": {
+                    bsonType: "number",
+                    description: "Error en el campo rec_id"
+                },
+                "id_paciente": {
+                    bsonType: "number",
+                    description: "Error en el campo id_paciente"
+                },
+                "id_medicamento": {
+                    bsonType: "number",
+                    description: "Error en el campo id_medicamento"
+                },
+                "nombre_empleado": {
+                    bsonType: "string",
+                    description: "Error en el campo nombre_empleado"
+                },
+                "cantidad": {
+                    bsonType: "number",
+                    description: "Error en el campo cantidad"
+                },
+                "rec_fecha": {
+                    bsonType: "string",
+                    description: "Errir en el campo rec_fecha"
+                }
+            }
+        }
+    }
+});
 db.Recetas.insertMany([
     {
         "rec_id": 1,
