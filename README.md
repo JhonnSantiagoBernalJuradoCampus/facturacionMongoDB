@@ -363,8 +363,36 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-14. Proveedores que no han vendido medicamentos en el último año
+14. `/venta/sinVentas` Proveedores que no han vendido medicamentos en el último año
     <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7434e65eee1a67b274bb9",
+            "venta_id": 1,
+            "nombre_prov": "Santiago",
+            "nombre_med": "Paracetamol",
+            "nombre_pac": "Daniel Felipe",
+            "venta_fecha": "2022-08-20",
+            "cantidad": 5
+        },
+        {
+            "_id": "64f7434e65eee1a67b274bbc",
+            "venta_id": 4,
+            "nombre_prov": "Fernando",
+            "nombre_med": "Omeprazol",
+            "nombre_pac": "Daniel Felipe",
+            "venta_fecha": "2022-07-30",
+            "cantidad": 5
+        }
+    ]
+    ```
+    </details>
+
+15. Obtener el total de medicamentos vendidos en marzo de 2023
+     <details>
     <summary>Datos de salida</summary>
 
     ```json
@@ -373,8 +401,6 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     }
     ```
     </details>
-
-15. Obtener el total de medicamentos vendidos en marzo de 2023
 
 16. Obtener el medicamento menos vendido en 2023
 
