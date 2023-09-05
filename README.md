@@ -573,8 +573,24 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-22. Empleados que hayan hecho más de 5 ventas en total
+22. `/venta/mas` Empleados que hayan hecho más de 5 ventas en total
+    <details>
+    <summary>Datos de salida</summary>
 
+    ```json
+    [
+        {
+            "_id": "64f76afcbe2bc214beb6c5ee",
+            "med_id": 2,
+            "med_nombre": "Simvastatina",
+            "contacto_proveedor": "Angie",
+            "precio": 10000,
+            "stock": 40,
+            "caducidad": "2024-03-20"
+        }
+    ]
+    ```
+    </details>
 23. Medicamentos que no han sido vendidos nunca
 
 24. Paciente que ha gastado más dinero en 2023
