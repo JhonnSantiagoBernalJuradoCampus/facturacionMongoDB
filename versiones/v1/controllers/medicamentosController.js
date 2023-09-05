@@ -42,4 +42,9 @@ const getNoVendidos = async (req,res)=>{
     res.send(result);
 };
 
-export {getMedicamentosMenor50, getCompradosProveedor, getCaduca, getNoVendidos};
+const getMedicamentoCaro = async (req,res)=>{
+    const result = await collection.find().sort({precio: -1}).limit(1).toArray();
+    res.send(result);
+};
+
+export {getMedicamentosMenor50, getCompradosProveedor, getCaduca, getNoVendidos, getMedicamentoCaro};
