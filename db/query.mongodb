@@ -1,0 +1,323 @@
+use("facturacionCampus_JhonBernal");
+db.createCollection("Ventas");
+db.Ventas.insertMany([
+    {
+        "venta_id": 1,
+        "nombre_prov": "Santiago",
+        "nombre_med": "Paracetamol",
+        "nombre_pac": "Daniel Felipe",
+        "venta_fecha": "2022-08-20",
+        "cantidad": 5
+    },
+    {
+        "venta_id": 2,
+        "nombre_prov": "Angie",
+        "nombre_med": "Simvastatina",
+        "nombre_pac": "Loren Nathalia",
+        "venta_fecha": "2023-03-15",
+        "cantidad": 2
+    },
+    {
+        "venta_id": 3,
+        "nombre_prov": "Angela",
+        "nombre_med": "Paracetamol",
+        "nombre_pac": "James Ronald",
+        "venta_fecha": "2023-03-10",
+        "cantidad": 8
+    },
+    {
+        "venta_id": 4,
+        "nombre_prov": "Fernando",
+        "nombre_med": "Omeprazol",
+        "nombre_pac": "Daniel Felipe",
+        "venta_fecha": "2022-07-30",
+        "cantidad": 5
+    }
+]);
+
+use("facturacionCampus_JhonBernal");
+
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Compras")
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Proveedores")
+db.Proveedores.insertMany([
+    {
+        "prov_id": 1,
+        "prov_nombre": "Santiago"
+    },
+    {
+        "prov_id": 2,
+        "prov_nombre": "Angie"
+    },
+    {
+        "prov_id": 3,
+        "prov_nombre": "Nicole"
+    },
+    {
+        "prov_id": 3,
+        "prov_nombre": "Fernando"
+    }
+]);
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Empleados")
+db.Empleados.insertMany([
+    {
+        "empleado_id": 1,
+        "empleado_nombre": "Dr. Martinez",
+        "role": {
+            "nombre": "admin",
+            "permisos": ["*"]
+        }
+    },
+    {
+        "empleado_id": 2,
+        "empleado_nombre": "Dr. Lopez",
+        "role": {
+            "nombre": "admin",
+            "permisos": ["*"]
+        }
+    }
+])
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Pacientes");
+db.Pacientes.insertMany([
+    {
+        "pac_id": 1,
+        "pac_nombre": "Daniel Felipe"
+    },
+    {
+        "pac_id": 2,
+        "pac_nombre": "Loren Nathalia"
+    },
+    {
+        "pac_id": 3,
+        "pac_nombre": "James Ronald"
+    }
+])
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Recetas");
+db.Recetas.insertMany([
+    {
+        "rec_id": 1,
+        "id_paciente": 1,
+        "id_medicamento": 1,
+        "nombre_empleado": "Dr. Martinez",
+        "cantidad": 2,
+        "rec_fecha": "23-09-2023"
+    },
+    {
+        "rec_id": 1,
+        "id_paciente": 2,
+        "id_medicamento": 2,
+        "nombre_empleado": "Dr. Lopez",
+        "cantidad": 5,
+        "rec_fecha": "01-02-2024"
+    }
+])
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Medicamentos")
+db.Medicamentos.insertMany([
+    {
+        "med_id": 1,
+        "med_nombre": "Paracetamol",    
+        "contacto_proveedor": "Santiago",
+        "precio": 2000,
+        "stock": 200,
+        "caducidad": "2023-10-11",
+    },
+    {
+        "med_id": 2,
+        "med_nombre": "Simvastatina",
+        "contacto_proveedor": "Angie",
+        "precio": 10000,
+        "stock": 40,
+        "caducidad": "2024-03-20"
+    },
+    {
+        "med_id": 3,
+        "med_nombre": "Aspirina",    
+        "contacto_proveedor": "Santiago",
+        "precio": 1000,
+        "stock": 300,
+        "caducidad": "2023-02-08",
+    },
+    {
+        "med_id": 4,
+        "med_nombre": "Omeprazol",    
+        "contacto_proveedor": "Fernando",
+        "precio": 50000,
+        "stock": 20,
+        "caducidad": "2022-07-30",
+    }
+]);
+
+use("facturacionCampus_JhonBernal");
+
+
+use("facturacionCampus_JhonBernal");
+db.createCollection("Inventario")
+// 1. db.Medicamentos.find({stock: {$lt: 50}});
+/* 2. db.Proveedores.aggregate([
+   {
+        $lookup: {
+          from: "Medicamentos",
+          localField: "prov_nombre",
+          foreignField: "contacto_proveedor",
+          as: "Info"
+        }
+    },
+    {
+        $match: { "Info": {$ne: []}}
+    },
+    {
+        $project: {
+            "_id": 0,
+            "prov_id": 1,
+            "prov_nombre": 1,
+            "Info.med_nombre": 1,
+            "Info.contacto_proveedor": 1
+        }
+    }
+]);*/
+// 3. db.Medicamentos.find({contacto_proveedor: {$eq: "Santiago"}0})
+// 4. db.Recetas.find({"rec_fecha": {$gt: "2023-01-01"}})
+// 5. db.Ventas.find({nombre_med: {$eq: "Paracetamol"}}).count()
+// 6. db.Medicamentos.find({"caducidad": {$lt: "2024-01-01"}})
+/* 7. db.Proveedores.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "prov_nombre",
+          foreignField: "nombre_prov",
+          as: "Ventas"
+        }
+    },
+    {
+        $match: {
+            "Ventas": {$ne: []}
+        }
+    },
+    {
+        $project: {
+            "_id": 1,
+            "prov_id": 1,
+            "prov_nombre": 1,
+            "Ventas.cantidad": 1
+        }
+    },
+    {
+        $unwind: "$Ventas"
+    },
+    {
+        $group: {
+            _id: "$prov_id",
+            prov_nombre: { $first: "$prov_nombre"},
+            Ventas: { $sum: "$Ventas.cantidad"}
+        }
+    }
+]) */
+/* 8. db.Ventas.aggregate([
+    {
+        $lookup: {
+            from: "Medicamentos",
+            localField: "nombre_med",
+            foreignField: "med_nombre",
+            as: "med"
+        }
+    },
+    {
+        $match: {
+            "med": {$ne: []}
+        }
+    },
+    {
+        $unwind: "$med"
+    },
+    {
+        $group: {
+            _id: "$med.med_id",
+            nombre_med: { $first: "$nombre_med"},
+            cantidad: { $sum: "$cantidad"},
+            precio: {$first: "$med.precio"},
+            recuado:{$sum: {$multiply: ["$cantidad", "$med.precio"]}}
+        }
+    }
+]) */
+// 9. db.Recetas.find({nombre_empleado: {$eq: "Dr. Martinez"}});
+/* 10. db.Medicamentos.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "med_nombre",
+          foreignField: "nombre_med",
+          as: "noVendido"
+        }
+    },
+    {
+        $match: {
+            "noVendido": {$eq: []}
+        }
+    },
+    {
+        $project: {
+            "noVendido": 0
+        }
+    }
+])*/
+// 11. db.Medicamentos.find().sort({precio: -1}).limit(1);
+/* 12. db.Proveedores.aggregate([
+        {
+            $lookup: {
+            from: "Medicamentos",
+            localField: "prov_nombre",
+            foreignField: "contacto_proveedor",
+            as: "Meds"
+            }
+        },
+        {
+            $match: {
+                "Meds": {$ne: []}
+            }
+        },
+        {
+            $unwind: "$Meds"
+        },
+        {
+            $group: {
+              _id: "$Meds.med_id",
+              "proveedor": {$first: "$Meds.contacto_proveedor"},
+              "medicamentos": {$sum: 1}
+            }
+        }
+    ]) */
+/* 13. db.Pacientes.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "pac_nombre",
+          foreignField: "nombre_pac",
+          as: "Compra"
+        }
+    },
+    {
+        $match: {
+            "Compra.nombre_med": "Paracetamol"
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "Compra": 0
+        }
+    }
+]) */
+// 14. db.Ventas.find({ "venta_fecha": {$lt: "2022-09-05"}},{"_id": 0,"nombre_prov": 1})
+// 15. db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-03-01"}},{venta_fecha: {$lte: "2023-03-31"}}]})
+// 16. db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-01-01"}},{venta_fecha: {$lte: "2023-12-31"}}]},{"nombre_med": 1, "cantidad": 1}).sort({cantidad: 1}).limit(1)
