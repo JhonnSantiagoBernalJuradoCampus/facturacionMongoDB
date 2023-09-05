@@ -202,3 +202,18 @@ db.Ventas.aggregate([
         }
     }
 ])
+use("facturacionCampus_JhonBernal");
+db.Ventas.aggregate([
+    {
+        $match: {
+            "venta_fecha": {$gte: "2023-01-01"}
+        }
+    },
+    {
+        $group: {
+          _id: "$venta_id",
+          "empleado": {$first: "$nombre_prov"},
+          "ventas": {$sum: 1}
+        }
+    }
+]);

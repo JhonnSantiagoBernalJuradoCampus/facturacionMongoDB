@@ -107,4 +107,22 @@ const getPromedioMedicamento = async (req,res) =>{
     res.send(result);
 };
 
-export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor, getPromedioMedicamento};
+const getVentasAño = async (req,res) =>{
+    const result = await collection.aggregate([
+        {
+            $match: {
+                "venta_fecha": {$gte: "2023-01-01"}
+            }
+        },
+        {
+            $group: {
+              _id: "$venta_id",
+              "empleado": {$first: "$nombre_prov"},
+              "ventas": {$sum: 1}
+            }
+        }
+    ]).toArray();
+    res.send(result);
+}
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo, getMenosVendido, getGananciaProveedor, getPromedioMedicamento, getVentasAño};
