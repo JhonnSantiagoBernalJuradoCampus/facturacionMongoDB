@@ -199,14 +199,28 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     </details>
 
 
-7. Total de medicamentos vendidos por cada proveedor
+7. `/proveedor/vendido` Total de medicamentos vendidos por cada proveedor
     <details>
     <summary>Datos de salida</summary>
 
     ```json
-    {
-        "Cantidad": 2
-    }
+    [
+        {
+            "_id": 3,
+            "prov_nombre": "Fernando",
+            "Ventas": 5
+        },
+        {
+            "_id": 1,
+            "prov_nombre": "Santiago",
+            "Ventas": 5
+        },
+        {
+            "_id": 2,
+            "prov_nombre": "Angie",
+            "Ventas": 2
+        }
+    ]
     ```
     </details>
 
@@ -235,7 +249,7 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
 
 
 10. Medicamentos que no han sido vendidos
-<details>
+    <details>
     <summary>Datos de salida</summary>
 
     ```json
