@@ -276,7 +276,27 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     </details>
 
 
-10. Medicamentos que no han sido vendidos
+10. `/medicamentos/sinVender` Medicamentos que no han sido vendidos
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bca",
+            "med_id": 3,
+            "med_nombre": "Aspirina",
+            "contacto_proveedor": "Santiago",
+            "precio": 1000,
+            "stock": 300,
+            "caducidad": "2023-02-08"
+        }
+    ]
+    ```
+    </details>
+
+
+11. Obtener el medicamento más caro
     <details>
     <summary>Datos de salida</summary>
 
@@ -286,9 +306,6 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     }
     ```
     </details>
-
-
-11. Obtener el medicamento más caro
 
 12. Número de medicamentos por proveedor
 
