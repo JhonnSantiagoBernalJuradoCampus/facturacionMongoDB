@@ -529,7 +529,30 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-20. Cantidad de ventas realizadas por cada empleado en 2023
+20. `/venta/anio` Cantidad de ventas realizadas por cada empleado en 2023
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": 2,
+            "empleado": "Angie",
+            "ventas": 1
+        },
+        {
+            "_id": 5,
+            "empleado": "Luis",
+            "ventas": 1
+        },
+        {
+            "_id": 3,
+            "empleado": "Angela",
+            "ventas": 1
+        }
+    ]
+    ```
+    </details>
 
 21. Obtener todos los medicamentos que expiren en 2024
 
