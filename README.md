@@ -438,7 +438,33 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-17. Ganancia total por proveedor en 2023 (asumiendo un campo precioCompra en Compras)
+17. `/venta/ganancia` Ganancia total por proveedor en 2023 (asumiendo un campo precioCompra en Compras)
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": 2,
+            "nombre_prov": "Angie",
+            "venta_fecha": "2023-03-15",
+            "ganancia": 20000
+        },
+        {
+            "_id": 3,
+            "nombre_prov": "Angela",
+            "venta_fecha": "2023-03-10",
+            "ganancia": 16000
+        },
+        {
+            "_id": 5,
+            "nombre_prov": "Luis",
+            "venta_fecha": "2023-05-22",
+            "ganancia": 8000
+        }
+    ]
+    ```
+    </details>
 
 18. Promedio de medicamentos comprados por venta
 
