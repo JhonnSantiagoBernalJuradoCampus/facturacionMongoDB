@@ -33,8 +33,33 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
 <img src="./assets/usoToken.png">
 
 # Consultas
+1. `/medicamentos/` Obtener todos los medicamentos con menos de 50 unidades en stock
+    <details>
+    <summary>Datos de salida</summary>
 
-1. Obtener todos los medicamentos con menos de 50 unidades en stock
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc9",
+            "med_id": 2,
+            "med_nombre": "Simvastatina",
+            "contacto_proveedor": "Angie",
+            "precio": 10000,
+            "stock": 40,
+            "caducidad": "2024-03-20"
+        },
+        {
+            "_id": "64f7435065eee1a67b274bcb",
+            "med_id": 4,
+            "med_nombre": "Omeprazol",
+            "contacto_proveedor": "Fernando",
+            "precio": 50000,
+            "stock": 20,
+            "caducidad": "2022-07-30"
+        }
+    ]
+    ```
+    </details>
 
 2. Listar los proveedores con su información de contacto en medicamentos
 
@@ -117,38 +142,3 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
 
 # Get
 ## Endpoints
-1. `/ejemplo` Mostrar todos los usuarios registrados en la base de datos.
-    <details>
-    <summary>Datos de salida</summary>
-
-    ```json
-    [
-        {
-            "_id": "64f3e69b344540b8c5ce001c",
-            "id": 1,
-            "PW": "Santi123",
-            "role": {
-                "nombre": "empleado",
-                "permisos": [
-                    "collection"
-                ]
-            }
-        },
-        {
-            "_id": "64f3e69b344540b8c5ce001d",
-            "id": 2,
-            "PW": "Miguel",
-            "role": {
-                "nombre": "admin",
-                "permisos": [
-                    "*"
-                ]
-            }
-        }
-    ]
-    ```
-    </details>
-
-# Post
-## Endpoints
-1. `/empleados/add`
