@@ -150,7 +150,16 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-5. Total de ventas del medicamento 'Paracetamol'
+5. `/venta/medicamento` Total de ventas del medicamento 'Paracetamol'
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
 
 6. Medicamentos que caducan antes del 1 de enero de 2024
 
