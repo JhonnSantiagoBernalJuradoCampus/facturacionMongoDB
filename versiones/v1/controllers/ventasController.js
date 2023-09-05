@@ -44,4 +44,9 @@ const getSinVentas = async (req,res) =>{
     res.send(result);
 };
 
-export {getVentasMedicamento, getTotalDinero, getSinVentas};
+const getMedicamentoMarzo = async (req,res)=>{
+    const result = await collection.find({$and: [{venta_fecha: {$gte: "2023-03-01"}},{venta_fecha: {$lte: "2023-03-31"}}]}).toArray();
+    res.send(result);
+};
+
+export {getVentasMedicamento, getTotalDinero, getSinVentas, getMedicamentoMarzo};
