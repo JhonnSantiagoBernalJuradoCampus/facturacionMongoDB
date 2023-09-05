@@ -256,14 +256,22 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-9. Recetas prescritas por el Dr. Martínez
+9. `/receta/doctor` Recetas prescritas por el Dr. Martínez
     <details>
     <summary>Datos de salida</summary>
 
     ```json
-    {
-        "Cantidad": 2
-    }
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc6",
+            "rec_id": 1,
+            "id_paciente": 1,
+            "id_medicamento": 1,
+            "nombre_empleado": "Dr. Martinez",
+            "cantidad": 2,
+            "rec_fecha": "23-09-2023"
+        }
+    ]
     ```
     </details>
 
