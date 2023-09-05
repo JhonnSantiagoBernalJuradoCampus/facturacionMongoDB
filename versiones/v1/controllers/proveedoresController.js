@@ -29,4 +29,41 @@ const getProveedorContacto = async (req,res)=>{
     res.send(result);
 };
 
-export {getProveedorContacto}
+const getProveedorVendido = async (req,res)=>{
+    const result = await collection.aggregate([
+        {
+            $lookup: {
+              from: "Ventas",
+              localField: "prov_nombre",
+              foreignField: "nombre_prov",
+              as: "Ventas"
+            }
+        },
+        {
+            $match: {
+                "Ventas": {$ne: []}
+            }
+        },
+        {
+            $project: {
+                "_id": 1,
+                "prov_id": 1,
+                "prov_nombre": 1,
+                "Ventas.cantidad": 1
+            }
+        },
+        {
+            $unwind: "$Ventas"
+        },
+        {
+            $group: {
+                _id: "$prov_id",
+                prov_nombre: { $first: "$prov_nombre"},
+                Ventas: { $sum: "$Ventas.cantidad"}
+            }
+        }
+    ]).toArray();
+    res.send(result);
+};
+
+export {getProveedorContacto, getProveedorVendido};
