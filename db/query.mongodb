@@ -263,7 +263,40 @@ db.Recetas.insertMany([
 ])
 
 use("facturacionCampus_JhonBernal");
-db.createCollection("Medicamentos")
+db.createCollection("Medicamentos", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["med_id","med_nombre","contacto_proveedor","precio","stock","caducidad"],
+            properties: {
+                "med_id": {
+                    bsonType: "number",
+                    description: "Error en el campo med_id"
+                },
+                "med_nombre": {
+                    bsonType: "string",
+                    description: "Error en el campo med_nombre"
+                },
+                "contacto_proveedor": {
+                    bsonType: "string",
+                    description: "Error en el campo contacto_proveedor"
+                },
+                "precio": {
+                    bsonType: "number",
+                    description: "Error en el campo precio"
+                },
+                "stock": {
+                    bsonType: "number",
+                    description: "Error en el campo stock"
+                },
+                "caducidad": {
+                    bsonType: "string",
+                    description: "Error en el campo caducidad"
+                }
+            }
+        }
+    }
+})
 db.Medicamentos.insertMany([
     {
         "med_id": 1,
@@ -298,162 +331,3 @@ db.Medicamentos.insertMany([
         "caducidad": "2022-07-30",
     }
 ]);
-
-// 1. db.Medicamentos.find({stock: {$lt: 50}});
-/* 2. db.Proveedores.aggregate([
-   {
-        $lookup: {
-          from: "Medicamentos",
-          localField: "prov_nombre",
-          foreignField: "contacto_proveedor",
-          as: "Info"
-        }
-    },
-    {
-        $match: { "Info": {$ne: []}}
-    },
-    {
-        $project: {
-            "_id": 0,
-            "prov_id": 1,
-            "prov_nombre": 1,
-            "Info.med_nombre": 1,
-            "Info.contacto_proveedor": 1
-        }
-    }
-]);*/
-// 3. db.Medicamentos.find({contacto_proveedor: {$eq: "Santiago"}})
-// 4. db.Recetas.find({"rec_fecha": {$gt: "2023-01-01"}})
-// 5. db.Ventas.find({nombre_med: {$eq: "Paracetamol"}}).count()
-// 6. db.Medicamentos.find({"caducidad": {$lt: "2024-01-01"}})
-/* 7. db.Proveedores.aggregate([
-    {
-        $lookup: {
-          from: "Ventas",
-          localField: "prov_nombre",
-          foreignField: "nombre_prov",
-          as: "Ventas"
-        }
-    },
-    {
-        $match: {
-            "Ventas": {$ne: []}
-        }
-    },
-    {
-        $project: {
-            "_id": 1,
-            "prov_id": 1,
-            "prov_nombre": 1,
-            "Ventas.cantidad": 1
-        }
-    },
-    {
-        $unwind: "$Ventas"
-    },
-    {
-        $group: {
-            _id: "$prov_id",
-            prov_nombre: { $first: "$prov_nombre"},
-            Ventas: { $sum: "$Ventas.cantidad"}
-        }
-    }
-]) */
-/* 8. db.Ventas.aggregate([
-    {
-        $lookup: {
-            from: "Medicamentos",
-            localField: "nombre_med",
-            foreignField: "med_nombre",
-            as: "med"
-        }
-    },
-    {
-        $match: {
-            "med": {$ne: []}
-        }
-    },
-    {
-        $unwind: "$med"
-    },
-    {
-        $group: {
-            _id: "$med.med_id",
-            nombre_med: { $first: "$nombre_med"},
-            cantidad: { $sum: "$cantidad"},
-            precio: {$first: "$med.precio"},
-            recuado:{$sum: {$multiply: ["$cantidad", "$med.precio"]}}
-        }
-    }
-]) */
-// 9. db.Recetas.find({nombre_empleado: {$eq: "Dr. Martinez"}});
-/* 10. db.Medicamentos.aggregate([
-    {
-        $lookup: {
-          from: "Ventas",
-          localField: "med_nombre",
-          foreignField: "nombre_med",
-          as: "noVendido"
-        }
-    },
-    {
-        $match: {
-            "noVendido": {$eq: []}
-        }
-    },
-    {
-        $project: {
-            "noVendido": 0
-        }
-    }
-])*/
-// 11. db.Medicamentos.find().sort({precio: -1}).limit(1);
-/* 12. db.Proveedores.aggregate([
-        {
-            $lookup: {
-            from: "Medicamentos",
-            localField: "prov_nombre",
-            foreignField: "contacto_proveedor",
-            as: "Meds"
-            }
-        },
-        {
-            $match: {
-                "Meds": {$ne: []}
-            }
-        },
-        {
-            $unwind: "$Meds"
-        },
-        {
-            $group: {
-              _id: "$Meds.med_id",
-              "proveedor": {$first: "$Meds.contacto_proveedor"},
-              "medicamentos": {$sum: 1}
-            }
-        }
-    ]) */
-/* 13. db.Pacientes.aggregate([
-    {
-        $lookup: {
-          from: "Ventas",
-          localField: "pac_nombre",
-          foreignField: "nombre_pac",
-          as: "Compra"
-        }
-    },
-    {
-        $match: {
-            "Compra.nombre_med": "Paracetamol"
-        }
-    },
-    {
-        $project: {
-            "_id": 0,
-            "Compra": 0
-        }
-    }
-]) */
-// 14. db.Ventas.find({ "venta_fecha": {$lt: "2022-09-05"}},{"_id": 0,"nombre_prov": 1})
-// 15. db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-03-01"}},{venta_fecha: {$lte: "2023-03-31"}}]})
-// 16. db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-01-01"}},{venta_fecha: {$lte: "2023-12-31"}}]},{"nombre_med": 1, "cantidad": 1}).sort({cantidad: 1}).limit(1)
