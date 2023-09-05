@@ -12,4 +12,10 @@ const getCompradosProveedor = async (req,res)=>{
     const result = await collection.find({contacto_proveedor: {$eq: "Santiago"}}).toArray();
     res.send(result);
 };
-export {getMedicamentosMenor50, getCompradosProveedor}
+
+const getCaduca = async (req,res)=>{
+    const result = await collection.find({"caducidad": {$lt: "2024-01-01"}}).toArray();
+    res.send(result);
+}
+
+export {getMedicamentosMenor50, getCompradosProveedor, getCaduca};
