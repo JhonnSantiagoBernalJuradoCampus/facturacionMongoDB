@@ -466,7 +466,40 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-18. Promedio de medicamentos comprados por venta
+18. `/venta/promedio` Promedio de medicamentos comprados por venta
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": 2,
+            "medicamento": "Simvastatina",
+            "promedio": 2
+        },
+        {
+            "_id": 3,
+            "medicamento": "Paracetamol",
+            "promedio": 8
+        },
+        {
+            "_id": 1,
+            "medicamento": "Paracetamol",
+            "promedio": 5
+        },
+        {
+            "_id": 5,
+            "medicamento": "Aspirina",
+            "promedio": 8
+        },
+        {
+            "_id": 4,
+            "medicamento": "Omeprazol",
+            "promedio": 5
+        }
+    ]
+    ```
+    </details>
 
 19. Medicamentos que tienen menos de 50 unidades en stock
 
