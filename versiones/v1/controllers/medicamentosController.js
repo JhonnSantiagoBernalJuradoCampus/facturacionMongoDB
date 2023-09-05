@@ -47,4 +47,9 @@ const getMedicamentoCaro = async (req,res)=>{
     res.send(result);
 };
 
-export {getMedicamentosMenor50, getCompradosProveedor, getCaduca, getNoVendidos, getMedicamentoCaro};
+const getCaducidad2024 = async (req,res) =>{
+    const result = await collection.find({caducidad: {$gte: "2024-01-01"}}).toArray();
+    res.send(result);
+}
+
+export {getMedicamentosMenor50, getCompradosProveedor, getCaduca, getNoVendidos, getMedicamentoCaro, getCaducidad2024};

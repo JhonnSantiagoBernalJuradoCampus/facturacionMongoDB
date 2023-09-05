@@ -261,8 +261,6 @@ db.Recetas.insertMany([
         "rec_fecha": "01-02-2024"
     }
 ])
-
-use("facturacionCampus_JhonBernal");
 db.createCollection("Medicamentos", {
     validator: {
         $jsonSchema: {
@@ -331,3 +329,5 @@ db.Medicamentos.insertMany([
         "caducidad": "2022-07-30",
     }
 ]);
+use("facturacionCampus_JhonBernal");
+db.Medicamentos.find({caducidad: {$gte: "2024-01-01"}});
