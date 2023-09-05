@@ -7,4 +7,9 @@ const getMedicamentosMenor50 = async (req,res)=>{
     const result = await collection.find({stock: {$lt: 50}}).toArray();
     res.send(result);
 };
-export {getMedicamentosMenor50}
+
+const getCompradosProveedor = async (req,res)=>{
+    const result = await collection.find({contacto_proveedor: {$eq: "Santiago"}}).toArray();
+    res.send(result);
+};
+export {getMedicamentosMenor50, getCompradosProveedor}

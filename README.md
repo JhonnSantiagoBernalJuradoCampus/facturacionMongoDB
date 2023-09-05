@@ -1,6 +1,4 @@
 # Farmacia Campus
-mongodb+srv://ma98030965140:<password>@cluster0.aenymrf.mongodb.net/
-Campus*2023
 ## Objetivo
 Como cliente de una farmacia, requiero un sistema de gestión que me permita gestionar las ventas y compras, interactuar con proveedores, empleados y pacientes,  generar informes de ventas y caducidad de medicamentos. Es esencial que este software pase por un proceso de análisis de requerimientos, diseño, implementación, pruebas, y eventual retiro, garantizando en todo momento la adaptabilidad, confiabilidad y eficiencia para las operaciones diarias de la farmacia.
 
@@ -105,7 +103,33 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-3. Medicamentos comprados al 'Proveedor A'
+3. `/medicamentos/comprados` Medicamentos comprados a 'Santiago'
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc8",
+            "med_id": 1,
+            "med_nombre": "Paracetamol",
+            "contacto_proveedor": "Santiago",
+            "precio": 2000,
+            "stock": 200,
+            "caducidad": "2023-10-11"
+        },
+        {
+            "_id": "64f7435065eee1a67b274bca",
+            "med_id": 3,
+            "med_nombre": "Aspirina",
+            "contacto_proveedor": "Santiago",
+            "precio": 1000,
+            "stock": 300,
+            "caducidad": "2023-02-08"
+        }
+    ]
+    ```
+    </details>
 
 4. Obtener recetas médicas emitidas después del 1 de enero de 2023
 

@@ -4,6 +4,6 @@ import { validatePermisos } from "../../../helpers/validatePermisos.js";
 
 const appProveedor = Router();
 
-appProveedor.get("/contacto",validatePermisos("xd"), getProveedorContacto)
+appProveedor.get("/contacto",validatePermisos("get"), getProveedorContacto)
 
 export default appProveedor;

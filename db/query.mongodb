@@ -186,7 +186,7 @@ db.createCollection("Inventario")
         }
     }
 ]);*/
-// 3. db.Medicamentos.find({contacto_proveedor: {$eq: "Santiago"}0})
+// 3. db.Medicamentos.find({contacto_proveedor: {$eq: "Santiago"}})
 // 4. db.Recetas.find({"rec_fecha": {$gt: "2023-01-01"}})
 // 5. db.Ventas.find({nombre_med: {$eq: "Paracetamol"}}).count()
 // 6. db.Medicamentos.find({"caducidad": {$lt: "2024-01-01"}})
