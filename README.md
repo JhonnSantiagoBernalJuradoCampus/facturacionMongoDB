@@ -345,14 +345,21 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-13. Pacientes que han comprado Paracetamol
+13. `/paciente/compra` Pacientes que han comprado Paracetamol
     <details>
     <summary>Datos de salida</summary>
 
     ```json
-    {
-        "Cantidad": 2
-    }
+    [
+        {
+            "pac_id": 3,
+            "pac_nombre": "James Ronald"
+        },
+        {
+            "pac_id": 1,
+            "pac_nombre": "Daniel Felipe"
+        }
+    ]
     ```
     </details>
 
