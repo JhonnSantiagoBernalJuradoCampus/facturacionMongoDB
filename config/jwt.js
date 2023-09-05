@@ -8,12 +8,12 @@ const dataBase = await connectionDB();
 
 const generateToken = async (req,res,next) =>{
   if(Object.keys(req.body).length === 0) return res.status(400).send({status:400,message:"Datos no ingresados"});
-  let coleccion = dataBase.collection("user");
+  let coleccion = dataBase.collection("Empleados");
 
   let {User, Password} = req.body;
   
 
-  const result = await coleccion.findOne({id: User, PW: Password});
+  const result = await coleccion.findOne({empleado_id: User, empleado_nombre: Password});
 
   if (!result) return res.status(401).send({status:401, message: "Usuario no encontrado"});
   const encoder = new TextEncoder();
