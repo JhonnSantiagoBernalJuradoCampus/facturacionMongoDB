@@ -161,15 +161,90 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-6. Medicamentos que caducan antes del 1 de enero de 2024
+6. `/medicamentos/caduca` Medicamentos que caducan antes del 1 de enero de 2024
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc8",
+            "med_id": 1,
+            "med_nombre": "Paracetamol",
+            "contacto_proveedor": "Santiago",
+            "precio": 2000,
+            "stock": 200,
+            "caducidad": "2023-10-11"
+        },
+        {
+            "_id": "64f7435065eee1a67b274bca",
+            "med_id": 3,
+            "med_nombre": "Aspirina",
+            "contacto_proveedor": "Santiago",
+            "precio": 1000,
+            "stock": 300,
+            "caducidad": "2023-02-08"
+        },
+        {
+            "_id": "64f7435065eee1a67b274bcb",
+            "med_id": 4,
+            "med_nombre": "Omeprazol",
+            "contacto_proveedor": "Fernando",
+            "precio": 50000,
+            "stock": 20,
+            "caducidad": "2022-07-30"
+        }
+    ]
+    ```
+    </details>
+
 
 7. Total de medicamentos vendidos por cada proveedor
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
+
 
 8. Cantidad total de dinero recaudado por las ventas de medicamentos
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
 
 9. Recetas prescritas por el Dr. Martínez
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
+
 
 10. Medicamentos que no han sido vendidos
+<details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    {
+        "Cantidad": 2
+    }
+    ```
+    </details>
+
 
 11. Obtener el medicamento más caro
 
