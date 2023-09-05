@@ -391,14 +391,31 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-15. Obtener el total de medicamentos vendidos en marzo de 2023
+15. `/venta/marzo` Obtener el total de medicamentos vendidos en marzo de 2023
      <details>
     <summary>Datos de salida</summary>
 
     ```json
-    {
-        "Cantidad": 2
-    }
+    [
+        {
+            "_id": "64f7434e65eee1a67b274bbb",
+            "venta_id": 3,
+            "nombre_prov": "Angela",
+            "nombre_med": "Paracetamol",
+            "nombre_pac": "James Ronald",
+            "venta_fecha": "2023-03-10",
+            "cantidad": 8
+        },
+        {
+            "_id": "64f7434e65eee1a67b274bba",
+            "venta_id": 2,
+            "nombre_prov": "Angie",
+            "nombre_med": "Simvastatina",
+            "nombre_pac": "Loren Nathalia",
+            "venta_fecha": "2023-03-15",
+            "cantidad": 2
+        }
+    ]
     ```
     </details>
 
