@@ -225,14 +225,34 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     </details>
 
 
-8. Cantidad total de dinero recaudado por las ventas de medicamentos
+8. `/venta/dinero` Cantidad total de dinero recaudado por las ventas de medicamentos
     <details>
     <summary>Datos de salida</summary>
 
     ```json
-    {
-        "Cantidad": 2
-    }
+    [
+        {
+            "_id": 1,
+            "nombre_med": "Paracetamol",
+            "cantidad": 13,
+            "precio": 2000,
+            "recuado": 26000
+        },
+        {
+            "_id": 2,
+            "nombre_med": "Simvastatina",
+            "cantidad": 2,
+            "precio": 10000,
+            "recuado": 20000
+        },
+        {
+            "_id": 4,
+            "nombre_med": "Omeprazol",
+            "cantidad": 5,
+            "precio": 50000,
+            "recuado": 250000
+        }
+    ]
     ```
     </details>
 
