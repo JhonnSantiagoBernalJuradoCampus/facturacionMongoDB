@@ -296,7 +296,27 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     </details>
 
 
-11. Obtener el medicamento más caro
+11. `/medicamentos/caro
+` Obtener el medicamento más caro
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bcb",
+            "med_id": 4,
+            "med_nombre": "Omeprazol",
+            "contacto_proveedor": "Fernando",
+            "precio": 50000,
+            "stock": 20,
+            "caducidad": "2022-07-30"
+        }
+    ]
+    ```
+    </details>
+
+12. Número de medicamentos por proveedor
     <details>
     <summary>Datos de salida</summary>
 
@@ -306,8 +326,6 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     }
     ```
     </details>
-
-12. Número de medicamentos por proveedor
 
 13. Pacientes que han comprado Paracetamol
 
