@@ -501,7 +501,33 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-19. Medicamentos que tienen menos de 50 unidades en stock
+19. `/medicamentos/menor50` Medicamentos que tienen menos de 50 unidades en stock
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc9",
+            "med_id": 2,
+            "med_nombre": "Simvastatina",
+            "contacto_proveedor": "Angie",
+            "precio": 10000,
+            "stock": 40,
+            "caducidad": "2024-03-20"
+        },
+        {
+            "_id": "64f7435065eee1a67b274bcb",
+            "med_id": 4,
+            "med_nombre": "Omeprazol",
+            "contacto_proveedor": "Fernando",
+            "precio": 50000,
+            "stock": 20,
+            "caducidad": "2022-07-30"
+        }
+    ]
+    ```
+    </details>
 
 20. Cantidad de ventas realizadas por cada empleado en 2023
 
