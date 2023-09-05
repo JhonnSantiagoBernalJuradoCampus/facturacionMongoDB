@@ -61,7 +61,49 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-2. Listar los proveedores con su información de contacto en medicamentos
+2. `/proveedor/contacto` Listar los proveedores con su información de contacto en medicamentos
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "prov_id": 1,
+            "prov_nombre": "Santiago",
+            "Info": [
+                {
+                    "med_nombre": "Paracetamol",
+                    "contacto_proveedor": "Santiago"
+                },
+                {
+                    "med_nombre": "Aspirina",
+                    "contacto_proveedor": "Santiago"
+                }
+            ]
+        },
+        {
+            "prov_id": 2,
+            "prov_nombre": "Angie",
+            "Info": [
+                {
+                    "med_nombre": "Simvastatina",
+                    "contacto_proveedor": "Angie"
+                }
+            ]
+        },
+        {
+            "prov_id": 3,
+            "prov_nombre": "Fernando",
+            "Info": [
+                {
+                    "med_nombre": "Omeprazol",
+                    "contacto_proveedor": "Fernando"
+                }
+            ]
+        }
+    ]
+    ```
+    </details>
 
 3. Medicamentos comprados al 'Proveedor A'
 

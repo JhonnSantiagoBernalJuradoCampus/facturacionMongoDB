@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getUser } from "../controllers/medicamentosController.js";
+import { getMedicamentosMenor50 } from "../controllers/medicamentosController.js";
 import { validatePermisos } from "../../../helpers/validatePermisos.js";
 
-const appEjemplo = Router();
+const appMedicamento = Router();
 
-appEjemplo.get("/menor50",validatePermisos("xd"), getUser)
+appMedicamento.get("/menor50",validatePermisos("xd"), getMedicamentosMenor50)
 
-export default appEjemplo;
+export default appMedicamento;
