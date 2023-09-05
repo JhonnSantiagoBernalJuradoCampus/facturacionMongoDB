@@ -1,0 +1,159 @@
+
+db.Medicamentos.find({stock: {$lt: 50}});
+db.Proveedores.aggregate([
+   {
+        $lookup: {
+          from: "Medicamentos",
+          localField: "prov_nombre",
+          foreignField: "contacto_proveedor",
+          as: "Info"
+        }
+    },
+    {
+        $match: { "Info": {$ne: []}}
+    },
+    {
+        $project: {
+            "_id": 0,
+            "prov_id": 1,
+            "prov_nombre": 1,
+            "Info.med_nombre": 1,
+            "Info.contacto_proveedor": 1
+        }
+    }
+]);
+db.Medicamentos.find({contacto_proveedor: {$eq: "Santiago"}})
+db.Recetas.find({"rec_fecha": {$gt: "2023-01-01"}})
+db.Ventas.find({nombre_med: {$eq: "Paracetamol"}}).count()
+db.Medicamentos.find({"caducidad": {$lt: "2024-01-01"}})
+db.Proveedores.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "prov_nombre",
+          foreignField: "nombre_prov",
+          as: "Ventas"
+        }
+    },
+    {
+        $match: {
+            "Ventas": {$ne: []}
+        }
+    },
+    {
+        $project: {
+            "_id": 1,
+            "prov_id": 1,
+            "prov_nombre": 1,
+            "Ventas.cantidad": 1
+        }
+    },
+    {
+        $unwind: "$Ventas"
+    },
+    {
+        $group: {
+            _id: "$prov_id",
+            prov_nombre: { $first: "$prov_nombre"},
+            Ventas: { $sum: "$Ventas.cantidad"}
+        }
+    }
+]) 
+db.Ventas.aggregate([
+    {
+        $lookup: {
+            from: "Medicamentos",
+            localField: "nombre_med",
+            foreignField: "med_nombre",
+            as: "med"
+        }
+    },
+    {
+        $match: {
+            "med": {$ne: []}
+        }
+    },
+    {
+        $unwind: "$med"
+    },
+    {
+        $group: {
+            _id: "$med.med_id",
+            nombre_med: { $first: "$nombre_med"},
+            cantidad: { $sum: "$cantidad"},
+            precio: {$first: "$med.precio"},
+            recuado:{$sum: {$multiply: ["$cantidad", "$med.precio"]}}
+        }
+    }
+]) 
+db.Recetas.find({nombre_empleado: {$eq: "Dr. Martinez"}});
+db.Medicamentos.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "med_nombre",
+          foreignField: "nombre_med",
+          as: "noVendido"
+        }
+    },
+    {
+        $match: {
+            "noVendido": {$eq: []}
+        }
+    },
+    {
+        $project: {
+            "noVendido": 0
+        }
+    }
+])
+db.Medicamentos.find().sort({precio: -1}).limit(1);
+db.Proveedores.aggregate([
+        {
+            $lookup: {
+            from: "Medicamentos",
+            localField: "prov_nombre",
+            foreignField: "contacto_proveedor",
+            as: "Meds"
+            }
+        },
+        {
+            $match: {
+                "Meds": {$ne: []}
+            }
+        },
+        {
+            $unwind: "$Meds"
+        },
+        {
+            $group: {
+              _id: "$Meds.med_id",
+              "proveedor": {$first: "$Meds.contacto_proveedor"},
+              "medicamentos": {$sum: 1}
+            }
+        }
+    ]) 
+db.Pacientes.aggregate([
+    {
+        $lookup: {
+          from: "Ventas",
+          localField: "pac_nombre",
+          foreignField: "nombre_pac",
+          as: "Compra"
+        }
+    },
+    {
+        $match: {
+            "Compra.nombre_med": "Paracetamol"
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "Compra": 0
+        }
+    }
+]) 
+db.Ventas.find({ "venta_fecha": {$lt: "2022-09-05"}},{"_id": 0,"nombre_prov": 1})
+db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-03-01"}},{venta_fecha: {$lte: "2023-03-31"}}]})
+db.Ventas.find({$and: [{venta_fecha: {$gte: "2023-01-01"}},{venta_fecha: {$lte: "2023-12-31"}}]},{"nombre_med": 1, "cantidad": 1}).sort({cantidad: 1}).limit(1)
