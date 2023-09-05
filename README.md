@@ -131,7 +131,24 @@ Para poder ingresar a cada endpoint de esta Api debe ingresar el token generado 
     ```
     </details>
 
-4. Obtener recetas médicas emitidas después del 1 de enero de 2023
+4. `/receta/enero` Obtener recetas médicas emitidas después del 1 de enero de 2023
+    <details>
+    <summary>Datos de salida</summary>
+
+    ```json
+    [
+        {
+            "_id": "64f7435065eee1a67b274bc6",
+            "rec_id": 1,
+            "id_paciente": 1,
+            "id_medicamento": 1,
+            "nombre_empleado": "Dr. Martinez",
+            "cantidad": 2,
+            "rec_fecha": "23-09-2023"
+        }
+    ]
+    ```
+    </details>
 
 5. Total de ventas del medicamento 'Paracetamol'
 
